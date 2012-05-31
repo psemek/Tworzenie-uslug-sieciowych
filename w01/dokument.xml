@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dokument>
+  <student kierunek="informatyka">
+    <imie>Jan</imie>
+    <nazwisko>Kowalski</nazwisko>
+    <numer>10001</numer>
+  </student>
+  <przedmiot semestr="2">
+    <nazwa>Programowanie</nazwa>
+    <ocena>5.0</ocena>
+  </przedmiot>
+  <przedmiot semestr="1">
+    <nazwa>Algorytmy</nazwa>
+    <ocena>4.0</ocena>
+  </przedmiot>
+</dokument>

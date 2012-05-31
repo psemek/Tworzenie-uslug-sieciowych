@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE sklep SYSTEM "Zadanie 4.dtd">
+<sklep>
+	<plyta typ="CD">
+		<wykonawca>Placebo</wykonawca>
+		<tytul>Black Market Music</tytul>
+		<czas_trwania>53</czas_trwania>
+	</plyta >
+	<plyta typ="DVD">
+		<numer_katalogowy>00232</numer_katalogowy>
+		<cena>122</cena>
+	</plyta>
+	<plyta typ="CD">
+		<wykonawca>The Doors</wykonawca>
+		<tytul>Morrison Hotel</tytul>
+	</plyta>
+	<plyta typ="CD">
+		<wykonawca>The Killers</wykonawca>
+		<tytul>Hot Fuss</tytul>
+	</plyta>
+	<plyta typ="DVD">
+		<numer_katalogowy>00452</numer_katalogowy>
+		<cena>63</cena>
+	</plyta>
+	<plyta typ="CD">
+		<numer_katalogowy>00505</numer_katalogowy>
+		<cena>45</cena>
+	</plyta>
+</sklep>

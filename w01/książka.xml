@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ksiazka>
+  <autor>
+    <imie>Jan</imie>
+    <naziwsko>Kowalski</naziwsko>
+    <numer>10001</numer>
+  </autor>
+  <rozdzial numer="1">
+    <tytul>Wstęp</tytul>
+    <tresc>Dawno, dawno temu...</tresc>
+  </rozdzial>
+  <rozdzial numer="2">
+    <tytul>XML - co to jest?</tytul>
+    <tresc>XML to język...</tresc>
+  </rozdzial>
+</ksiazka>

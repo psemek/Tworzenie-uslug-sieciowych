@@ -1,0 +1,8 @@
+<!ELEMENT sklep (plyta*)>
+<!ATTLIST plyta typ (CD|DVD) #REQUIRED>
+<!ELEMENT plyta (wykonawca?,tytul?,czas_trwania?,numer_katalogowy?,cena?)>
+<!ELEMENT wykonawca (#PCDATA)>
+<!ELEMENT tytul (#PCDATA)>
+<!ELEMENT czas_trwania (#PCDATA)>
+<!ELEMENT numer_katalogowy (#PCDATA)>
+<!ELEMENT cena (#PCDATA)>

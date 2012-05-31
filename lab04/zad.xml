@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<wizytowka xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
+	<imie>Przemysław</imie>
+	<nazwisko>Gurbała</nazwisko>
+	<adres>
+		<ulica>Witosa</ulica>
+		<numer_domu>3</numer_domu>
+		<numer_mieszkania>76</numer_mieszkania>
+	</adres>
+	<telefon>
+		<komorkowy>50327384</komorkowy>
+		<stacjonarny></stacjonarny>
+	</telefon>
+  <e-main>przemyslaw.gurbala@student.pcz.pl</e-main>
+</wizytowka>

@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:element name="katalog">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="plyta" maxOccurs="unbounded">
+          <xsd:complexType>      
+            <xsd:all>
+              <xsd:element name="wykonawca" minOccurs="0"/>
+              <xsd:element name="tytul" minOccurs="0"/>
+              <xsd:element name="czas_trwania" minOccurs="0"/>
+              <xsd:element name="numer_katalogowy" minOccurs="0">
+                <xsd:simpleType>
+                  <xsd:restriction base="xsd:string">
+                    <xsd:pattern value="\d{5}"/>
+                  </xsd:restriction>
+                </xsd:simpleType>
+              </xsd:element>
+              <xsd:element name="cena" minOccurs="0"/>
+            </xsd:all>
+            <xsd:attribute name="typ" use="required">
+              <xsd:simpleType>
+                <xsd:restriction base="xsd:string">
+                  <xsd:enumeration value="CD"/>
+                  <xsd:enumeration value="DVD"/>
+                </xsd:restriction>
+              </xsd:simpleType>
+            </xsd:attribute>
+          </xsd:complexType>
+        </xsd:element>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+</xsd:schema>

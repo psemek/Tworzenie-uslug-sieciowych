@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<katalog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="plyty.xsd">
+  <plyta typ="CD">
+    <wykonawca>Placebo</wykonawca>
+    <tytul>Black Market Music</tytul>
+    <czas_trwania>53</czas_trwania>
+  </plyta >
+  <plyta typ="DVD">
+    <numer_katalogowy>00232</numer_katalogowy>
+    <cena>122</cena>
+  </plyta>
+  <plyta typ="CD">
+    <wykonawca>The Doors</wykonawca>
+    <tytul>Morrison Hotel</tytul>
+  </plyta>
+  <plyta typ="CD">
+    <wykonawca>The Killers</wykonawca>
+    <tytul>Hot Fuss</tytul>
+  </plyta>
+  <plyta typ="DVD">
+    <numer_katalogowy>00452</numer_katalogowy>
+    <cena>63</cena>
+  </plyta>
+  <plyta typ="CD">
+    <numer_katalogowy>00505</numer_katalogowy>
+    <cena>45</cena>
+  </plyta>
+</katalog>

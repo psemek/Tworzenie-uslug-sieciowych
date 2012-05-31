@@ -1,0 +1,32 @@
+package zad2;
+
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+
+import org.w3c.dom.Document;
+
+
+
+
+//import org.w3c.dom.Document;
+//import org.w3c.dom.Node;
+
+public class zadanie2  {
+	
+	public static void main(String[] args) throws Exception {
+	
+	Utility _utility = new Utility();
+	DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+	DocumentBuilder db = dbf.newDocumentBuilder();
+	Document xmlDoc = db.newDocument();
+	
+	//Zad2
+	_utility.xmlToDom("plyty.xml");
+	
+	//Zad3
+	_utility.createXmlCard(xmlDoc);
+	
+	}
+	
+	
+}

@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:element name="plyty">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="plyta" maxOccurs="unbounded">
+          <xsd:complexType>
+            <xsd:all>
+              <xsd:element name="wykonawca" type="xsd:string" minOccurs="0"></xsd:element>
+              <xsd:element name="tytul" minOccurs="0"></xsd:element>
+              <xsd:element name="czas_trwania" minOccurs="0"></xsd:element>
+              <xsd:element name="numer_katalogowy" minOccurs="0">
+                <xsd:simpleType>
+                  <xsd:restriction base="xsd:string">
+                    <xsd:pattern value="\d{9}">
+                    </xsd:pattern>
+                  </xsd:restriction>
+                </xsd:simpleType>
+              </xsd:element>
+              <xsd:element name="cena" minOccurs="0" type="xsd:int">
+              </xsd:element>
+            </xsd:all>
+            <xsd:attribute name="typ" use="required">
+              <xsd:simpleType>
+                <xsd:restriction base="xsd:string">
+                  <xsd:enumeration value="DVD"></xsd:enumeration>
+                  <xsd:enumeration value="CD"></xsd:enumeration>
+                </xsd:restriction>
+              </xsd:simpleType>
+            </xsd:attribute>
+          </xsd:complexType>
+        </xsd:element>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+</xsd:schema>

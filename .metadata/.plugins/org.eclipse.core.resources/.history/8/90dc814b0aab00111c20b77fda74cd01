@@ -1,0 +1,148 @@
+/*
+ * Napisz program w Javie, który wczyta i przeprowadzi walidacjê zawartoœci plików plyty.xml
+ * na podstawie pliku plyty.xsd (laboratorium numer 2). Nastêpnie wyœwietli typ p³yty, tytu³y i
+ * numery katalogowe.
+ */
+
+package zad2;
+
+import java.io.File;
+import java.io.IOException;
+
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
+
+import org.w3c.dom.Document;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
+import org.xml.sax.SAXException;
+
+public class walidacja {
+	public void printDocument(Document file)
+	{
+		Node docNode = null, bookNode = null, elementNode = null;
+		NodeList docNodeList = null, bookNodeList = null;
+		
+		docNode = file.getDocumentElement();
+		docNodeList = docNode.getChildNodes();
+		
+		for (int i=0; i<docNodeList.getLength(); i++) 
+		{
+			bookNode = docNodeList.item(i);
+			bookNodeList = bookNode.getChildNodes();
+			
+			for (int j=0; j<bookNodeList.getLength(); j++) 
+			{
+				elementNode = bookNodeList.item(j);
+				System.out.println(elementNode.getFirstChild().getNodeValue());
+			}
+		}
+	}
+	
+	public static void print(Node node) 
+	{
+		
+		if (node == null) 
+		{
+			return;
+		}
+		
+		switch (node.getNodeType())
+		{
+		case Node.DOCUMENT_NODE:
+			System.out.println("Zaczynamy...");
+			print(((Document) node).getDocumentElement());
+			System.out.println("koniec.");
+			break;
+		case Node.ELEMENT_NODE:
+
+			if(node.getLocalName() == "plyta")
+			{
+				System.out.println("Plyta :");
+				System.out.println("  Typ : " + node.getAttributes().item(0).getNodeValue());
+				
+				NodeList childNodes = node.getChildNodes();
+				for (int i = 0; i < childNodes.getLength(); i++) 
+				{
+					print(childNodes.item(i));
+				}
+			}
+			else if(node.getLocalName() == "plyty")
+			{
+				NodeList childNodes = node.getChildNodes();
+				for (int i = 0; i < childNodes.getLength(); i++) 
+				{
+					print(childNodes.item(i));
+				}
+			}
+			else if (node.getLocalName() == "tytul")
+			{
+				System.out.print("  Tytul : " );
+				print(node.getFirstChild());
+			}
+			else if (node.getLocalName() == "numer_katalogowy")
+			{
+				System.out.print("  Numer : " );
+				print(node.getFirstChild());
+			}
+			
+			break;
+		case Node.TEXT_NODE:
+			String value = node.getNodeValue();
+
+			for (int j = 0; j < value.length(); j++) 
+			{
+				switch (value.charAt(j)) 
+				{
+				case '\n':
+					System.out.print("\\n");
+					break;
+				case '\t':
+					System.out.print("\\t");
+					break;
+				default:
+					System.out.print(value.charAt(j));
+					break;
+				}
+			}
+			System.out.println();
+			break;
+		default:
+			break;
+		}
+	}
+	
+	public static void main(String[] args) throws Exception {
+		
+		try
+		{
+			MyErrorHandler handler = new MyErrorHandler();
+			DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+			dbf.setAttribute("http://java.sun.com/xml/jaxp/properties/schemaLanguage",
+				"http://www.w3.org/2001/XMLSchema");
+			dbf.setValidating(true);
+			dbf.setNamespaceAware(true);
+			DocumentBuilder db = dbf.newDocumentBuilder();
+			db.setErrorHandler(handler);
+		
+			Document xmlDoc = db.parse(new File("C:\\Documents and Settings\\Psemek\\Moje dokumenty\\Polibuda\\Tworzenie us³ug sieciowych\\lab04\\plyty.xml"));
+			
+			print(xmlDoc);
+			
+		}
+		catch(SAXException ex)
+		{
+			System.out.println(ex.getMessage());
+			return;
+		}
+		catch(ParserConfigurationException ex)
+		{
+			System.out.println(ex.getMessage());
+		}
+		catch(IOException ex)
+		{
+			System.out.println(ex.getMessage());
+		}
+	}
+}

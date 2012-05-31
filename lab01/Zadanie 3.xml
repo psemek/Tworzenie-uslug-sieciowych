@@ -1,0 +1,107 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE uczelnia SYSTEM "Zadanie 3.dtd">
+<uczelnia>
+	<nazwa_uczelni>Politechnika Częstochowska</nazwa_uczelni>
+	<skrot_nazwy>P.Cz.</skrot_nazwy>
+	<pracownicy>
+		<pracownik>
+			<imie>Jan</imie>
+			<nazwisko>Kowalski</nazwisko>
+			<stanowisko>Adiunkt</stanowisko>
+			<e-mail>jan.kowalski@pcz.pl</e-mail>
+		</pracownik>
+		<pracownik>
+			<imie>Stanisław</imie>
+			<nazwisko>Koniakowski</nazwisko>
+			<e-mail>stan@pcz.pl</e-mail>
+			<e-mail>stan@gmail.com</e-mail>
+			<e-mail>stan.kon@wp.pl</e-mail>
+		</pracownik>
+		<pracownik>
+			<imie>Zbigniew</imie>
+			<nazwisko>Zatorski</nazwisko>
+			<stanowisko>Profesor Pcz.</stanowisko>
+		</pracownik>
+		<pracownik>
+			<imie>Aleksandra</imie>
+			<nazwisko>Adamiewicz</nazwisko>
+			<e-mail>kwestura@pcz.pl</e-mail>
+		</pracownik>
+	</pracownicy>
+	<studenci>
+		<grupa>
+			<specjalnosc>Zaawansowane Systemy Zarządzania i Analizy Danych</specjalnosc>
+			<symbol>ZSZiAD1</symbol>
+			<semestr>1</semestr>
+			<student>
+				<imie>Alojzy</imie>
+				<nazwisko>Alozjziewicz</nazwisko>
+				<miejscowosc>Częstochowa</miejscowosc>
+			</student>
+			<student>
+				<imie>Błażej</imie>
+				<nazwisko>Błażejewicz</nazwisko>
+				<miejscowosc>Kłobuck</miejscowosc>
+				<e-mail>blazej@gmail.com</e-mail>
+			</student>
+			<student>
+				<imie>Cecylia</imie>
+				<nazwisko>Cecyliewicz</nazwisko>
+				<miejscowosc>Częstochowa</miejscowosc>
+				<e-mail>ce.ce@gmail.com</e-mail>
+			</student>
+		</grupa>
+		<grupa>
+			<specjalnosc>Aplikacje biznesowe i bazy danych</specjalnosc>
+			<symbol>ABiBD1</symbol>
+			<semestr>1</semestr>
+		</grupa>
+		<grupa>
+			<specjalnosc>Tworzenia aplikacji WWW</specjalnosc>
+			<symbol>TAWWW3</symbol>
+			<semestr>3</semestr>
+			<student>
+				<imie>Damian</imie>
+				<nazwisko>Damianik</nazwisko>
+				<miejscowosc>Wrocław</miejscowosc>
+			</student>
+			<student>
+				<imie>Feliks</imie>
+				<nazwisko>Feliksowicz</nazwisko>
+				<miejscowosc>Warszawa</miejscowosc>
+				<e-mail>ffeliksowicz@wp.pl</e-mail>
+			</student>
+		</grupa>
+		<grupa>
+			<specjalnosc>Tworzenie aplikacji WWW</specjalnosc>
+			<symbol>TAWWW5</symbol>
+			<semestr>5</semestr>
+			<student>
+				<imie>Edyta</imie>
+				<nazwisko>Edytkiewska</nazwisko>
+				<miejscowosc>Gdańsk</miejscowosc>
+			</student>
+		</grupa>
+		<grupa>
+			<specjalnosc>Sieci komputerowe</specjalnosc>
+			<symbol>SK3</symbol>
+			<semestr>3</semestr>
+			<student>
+				<imie>Gerard</imie>
+				<nazwisko>Goryczko</nazwisko>
+				<miejscowosc>Częstochowa</miejscowosc>
+				<e-mail>ge.go@poczta.onet.pl</e-mail>
+			</student>
+		</grupa>
+		<grupa>
+			<specjalnosc>Sieci komputerowe</specjalnosc>
+			<symbol>SK5</symbol>
+			<semestr>5</semestr>
+			<student>
+				<imie>Henryk</imie>
+				<nazwisko>Henrykowski</nazwisko>
+				<miejscowosc>Częstochowa</miejscowosc>
+			</student>
+		</grupa>
+	</studenci>
+</uczelnia>

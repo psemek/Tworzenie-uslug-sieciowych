@@ -1,0 +1,16 @@
+<!ELEMENT uczelnia (nazwa_uczelni,skrot_nazwy?,pracownicy?,studenci?)>
+<!ELEMENT pracownicy (pracownik+)>
+<!ELEMENT pracownik (imie, nazwisko,stanowisko?,e-mail*)>
+<!ELEMENT studenci (grupa*)>
+<!ELEMENT grupa (specjalnosc, symbol?,semestr,student*)>
+<!ELEMENT student (imie, nazwisko,miejscowosc?,e-mail*)>
+<!ELEMENT nazwisko (#PCDATA)>
+<!ELEMENT imie (#PCDATA)>
+<!ELEMENT stanowisko (#PCDATA)>
+<!ELEMENT e-mail (#PCDATA)>
+<!ELEMENT semestr (#PCDATA)>
+<!ELEMENT specjalnosc (#PCDATA)>
+<!ELEMENT symbol (#PCDATA)>
+<!ELEMENT miejscowosc (#PCDATA)>
+<!ELEMENT nazwa_uczelni (#PCDATA)>
+<!ELEMENT skrot_nazwy (#PCDATA)>

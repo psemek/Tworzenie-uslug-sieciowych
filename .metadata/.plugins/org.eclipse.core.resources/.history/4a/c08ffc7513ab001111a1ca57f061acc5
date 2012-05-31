@@ -1,0 +1,65 @@
+package zad2;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.text.NumberFormat;
+import java.text.SimpleDateFormat;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+@WebServlet("/servletKalkulator")
+public class servletKalkulator extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		//Kalkulator k1 = new Kalkulator(150000, 240, 6.00, 1, 0, 0, "PLN" );
+		Kalkulator k1 = new Kalkulator(Double.parseDouble(request.getParameter("param1")),
+									   Integer.parseInt(request.getParameter("param2")),
+									   Double.parseDouble(request.getParameter("param3")),
+									   Double.parseDouble(request.getParameter("param4")),
+									   Double.parseDouble(request.getParameter("param5")),
+									   Double.parseDouble(request.getParameter("param6")),
+									   					  request.getParameter("param7"));
+		RatyKalendarz rk = k1.getRataKalendarzRatyMalejace();
+		//RatyKalendarz rkStale = k1.getRataKalendarzRatyStale();
+		
+		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+		NumberFormat format = NumberFormat.getNumberInstance();
+		format.setMinimumFractionDigits(2);
+		format.setMaximumFractionDigits(2);
+		
+		response.setContentType("text/html");
+		PrintWriter out = response.getWriter();
+		out.println("<HTML>");
+		out.println("<HEAD><TITLE>Zadanie 2</TITLE> </HEAD>");
+		out.println("<H1 ALIGN=CENTER>Zadanie 2</H1>");	
+		out.println("<TABLE BORDER=1 ALIGN=CENTER>");
+		out.println("<TR BGCOLOR=\"#FFAD00\">");
+		out.println("<TH>Lp.</TH><TH>Data</TH><TH>Oprocentowanie</TH><TH>Kurs</TH><TH>Rata kapitalowa</TH><TH>Rata odsetki</TH><TH>Suma raty</TH><TH>Kapital do splaty</TH></TR>");
+
+		for (int i=0; i<rk.getRaty().size(); i++) {
+			Rata rata = rk.getRaty().get(i);
+			int k = i + 1;
+			out.println("<TR>");
+			out.println("<TD><CENTER>" + k + "</CENTER></TD>");
+			out.println("<TD><CENTER>" + dateFormat.format(rata.getData()) + "</CENTER></TD>");
+			out.println("<TD><CENTER>" + format.format(rata.getOprocentowanie()) + "</CENTER></TD>");
+			out.println("<TD><CENTER>" + format.format(rata.getKurs()) + "</CENTER></TD>");
+			out.println("<TD><CENTER>" + format.format(rata.getRataKapitalowa()) + "</CENTER></TD>");
+			out.println("<TD><CENTER>" + format.format(rata.getOdsetki()) + "</CENTER></TD>");
+			out.println("<TD><CENTER>" + format.format(rata.getSumaRaty()) + "</CENTER></TD>");
+			out.println("<TD><CENTER>" + format.format(rata.getKapitalDoSplaty()) + "</CENTER></TD>");
+			out.println("</TR>");
+		}
+		out.println("</TABLE></HTML>");
+	}
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+	}
+
+}

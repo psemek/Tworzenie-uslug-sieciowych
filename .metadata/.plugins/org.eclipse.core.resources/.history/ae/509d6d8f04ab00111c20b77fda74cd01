@@ -1,0 +1,207 @@
+package zad2;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerConfigurationException;
+import javax.xml.transform.TransformerException;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
+
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.NamedNodeMap;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
+import org.xml.sax.SAXException;
+
+public class Utility {
+	public void printDocument(Document file)
+	{
+		Node docNode = null, bookNode = null, elementNode = null;
+		NodeList docNodeList = null, bookNodeList = null;
+		
+		docNode = file.getDocumentElement();
+		docNodeList = docNode.getChildNodes();
+		
+		for (int i=0; i<docNodeList.getLength(); i++) 
+		{
+			bookNode = docNodeList.item(i);
+			bookNodeList = bookNode.getChildNodes();
+			
+			for (int j=0; j<bookNodeList.getLength(); j++) 
+			{
+				elementNode = bookNodeList.item(j);
+				System.out.println(elementNode.getFirstChild().getNodeValue());
+			}
+		}
+	}
+	
+	public void createXmlCard(Document xmlDoc) throws FileNotFoundException, TransformerException
+	{
+		String direcory = System.getProperty("user.dir") + "\\wizytowka.xml";
+		
+		
+		//Wizytówka
+		Node cardNode = xmlDoc.createElement("Wizytowka");
+		xmlDoc.appendChild(cardNode);
+		Node nameNode = xmlDoc.createElement("Imie");
+		cardNode.appendChild(nameNode);
+		Node surnameNode = xmlDoc.createElement("Nazwisko");
+		cardNode.appendChild(surnameNode);
+		Node addressNode = xmlDoc.createElement("Adres");
+		cardNode.appendChild(addressNode);
+		Node emailNode = xmlDoc.createElement("Email");
+		cardNode.appendChild(emailNode);
+		Element telephoneNode = xmlDoc.createElement("Telefon");
+		
+			
+		//Atrybuty
+		//Node sortAttribute = xmlDoc.createAttribute("rodzaj");
+		telephoneNode.setAttribute("rodzaj", "stac");
+		cardNode.appendChild(telephoneNode);
+		
+		//Adres
+		Node streetNode = xmlDoc.createElement("Ulica");
+		addressNode.appendChild(streetNode);
+		Node homeNumberNode = xmlDoc.createElement("NumberDomu");
+		addressNode.appendChild(homeNumberNode);
+		Node flatNumberNode = xmlDoc.createElement("NumerMieszkania");
+		addressNode.appendChild(flatNumberNode);
+		
+		//Text
+		
+		//sortAttribute.appendChild(xmlDoc.createTextNode("stac"));
+		nameNode.appendChild(xmlDoc.createTextNode("Mariusz"));
+		surnameNode.appendChild(xmlDoc.createTextNode("Gêsiarz"));
+		streetNode.appendChild(xmlDoc.createTextNode("Rêdziñska"));
+		homeNumberNode.appendChild(xmlDoc.createTextNode("38"));
+		telephoneNode.appendChild(xmlDoc.createTextNode("0323769078"));
+		emailNode.appendChild(xmlDoc.createTextNode("xxxxx@gmail.com"));
+		
+		TransformerFactory tf = TransformerFactory.newInstance();
+		Transformer t = tf.newTransformer();
+		
+		t.transform(
+		new DOMSource(xmlDoc),
+		new StreamResult(new FileOutputStream(direcory))
+		);
+		
+	}
+	
+	public void xmlToDom(String fileName) 
+	{
+		try
+		{
+			MyErrorHandler handler = new MyErrorHandler();
+			DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+			dbf.setAttribute("http://java.sun.com/xml/jaxp/properties/schemaLanguage",
+				"http://www.w3.org/2001/XMLSchema");
+			dbf.setValidating(true);
+			dbf.setNamespaceAware(true);
+			DocumentBuilder db = dbf.newDocumentBuilder();
+			db.setErrorHandler(handler);
+		
+			Document xmlDoc = db.parse(new File(fileName));
+			
+			print(xmlDoc);
+			
+		}
+		catch(SAXException ex)
+		{
+			System.out.println(ex.getMessage());
+			return;
+		}
+		catch(ParserConfigurationException ex)
+		{
+			System.out.println(ex.getMessage());
+		}
+		catch(IOException ex)
+		{
+			System.out.println(ex.getMessage());
+		}
+			
+	}
+	
+	
+		
+	public static void print(Node node) 
+	{
+		
+		if (node == null) 
+		{
+			return;
+		}
+		
+		switch (node.getNodeType())
+		{
+		case Node.DOCUMENT_NODE:
+			System.out.println("Zaczynamy...");
+			print(((Document) node).getDocumentElement());
+			System.out.println("koniec.");
+			break;
+		case Node.ELEMENT_NODE:
+
+			if(node.getLocalName() == "plyta")
+			{
+				System.out.println("Plyta :");
+				System.out.println("  Typ : " + node.getAttributes().item(0).getLocalName());
+				
+				NodeList childNodes = node.getChildNodes();
+				for (int i = 0; i < childNodes.getLength(); i++) 
+				{
+					print(childNodes.item(i));
+				}
+			}
+			else if(node.getLocalName() == "plyty")
+			{
+				NodeList childNodes = node.getChildNodes();
+				for (int i = 0; i < childNodes.getLength(); i++) 
+				{
+					print(childNodes.item(i));
+				}
+			}
+			else if (node.getLocalName() == "tytul")
+			{
+				System.out.print("  Tytul : " );
+				print(node.getFirstChild());
+			}
+			else if (node.getLocalName() == "numer_katalogowy")
+			{
+				System.out.print("  Numer : " );
+				print(node.getFirstChild());
+			}
+			
+			break;
+		case Node.TEXT_NODE:
+			String value = node.getNodeValue();
+
+			for (int j = 0; j < value.length(); j++) 
+			{
+				switch (value.charAt(j)) 
+				{
+				case '\n':
+					System.out.print("\\n");
+					break;
+				case '\t':
+					System.out.print("\\t");
+					break;
+				default:
+					System.out.print(value.charAt(j));
+					break;
+				}
+			}
+			System.out.println();
+			break;
+		default:
+			break;
+		}
+	}
+}

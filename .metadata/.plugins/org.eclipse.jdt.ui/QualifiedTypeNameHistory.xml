@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="java.util.HashMap"/>
+<fullyQualifiedTypeName name="java.util.Iterator"/>
+<fullyQualifiedTypeName name="java.text.DateFormat"/>
+<fullyQualifiedTypeName name="java.util.Date"/>
+<fullyQualifiedTypeName name="org.apache.xmlrpc.client.XmlRpcClientConfigImpl"/>
+<fullyQualifiedTypeName name="org.apache.xmlrpc.client.XmlRpcClient"/>
+<fullyQualifiedTypeName name="java.net.URL"/>
+<fullyQualifiedTypeName name="java.awt.image.BufferedImage"/>
+<fullyQualifiedTypeName name="java.awt.Graphics2D"/>
+<fullyQualifiedTypeName name="java.awt.Color"/>
+<fullyQualifiedTypeName name="java.io.OutputStream"/>
+<fullyQualifiedTypeName name="javax.imageio.ImageIO"/>
+<fullyQualifiedTypeName name="javax.xml.parsers.DocumentBuilderFactory"/>
+<fullyQualifiedTypeName name="javax.xml.parsers.DocumentBuilder"/>
+<fullyQualifiedTypeName name="org.w3c.dom.Document"/>
+<fullyQualifiedTypeName name="org.w3c.dom.Node"/>
+<fullyQualifiedTypeName name="javax.xml.transform.TransformerFactory"/>
+<fullyQualifiedTypeName name="javax.xml.transform.Transformer"/>
+<fullyQualifiedTypeName name="javax.xml.transform.dom.DOMSource"/>
+<fullyQualifiedTypeName name="javax.xml.transform.stream.StreamResult"/>
+<fullyQualifiedTypeName name="java.io.FileOutputStream"/>
+<fullyQualifiedTypeName name="org.xml.sax.SAXParseException"/>
+<fullyQualifiedTypeName name="org.xml.sax.ErrorHandler"/>
+<fullyQualifiedTypeName name="java.io.FileNotFoundException"/>
+<fullyQualifiedTypeName name="javax.xml.transform.TransformerException"/>
+<fullyQualifiedTypeName name="java.text.SimpleDateFormat"/>
+<fullyQualifiedTypeName name="java.text.NumberFormat"/>
+<fullyQualifiedTypeName name="java.io.PrintWriter"/>
+</qualifiedTypeNameHistroy>

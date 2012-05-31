@@ -1,0 +1,12 @@
+<!ELEMENT wizytowka (imie,nazwisko,adres,telefon,e-mail)>
+<!ELEMENT adres (ulica,numer_mieszkania,numer_domu)>
+<!ELEMENT telefony (komorkowy,stacjonarny)>
+<!ELEMENT imie (#PCDATA)>
+<!ELEMENT nazwisko (#PCDATA)>
+<!ELEMENT ulica (#PCDATA)>
+<!ELEMENT numer_mieszkania (#PCDATA)>
+<!ELEMENT numer_domu (#PCDATA)>
+<!ELEMENT komorkowy (#PCDATA)>
+<!ELEMENT stacjonarny (#PCDATA)>
+<!ELEMENT telefon (#PCDATA)>
+<!ELEMENT e-mail (#PCDATA)>

@@ -1,0 +1,63 @@
+import java.io.FileOutputStream;
+
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
+
+import org.w3c.dom.Document;
+import org.w3c.dom.Node;
+
+
+public class zad3 {
+	public static void main(String[] args) throws Exception {
+		DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+		DocumentBuilder db = dbf.newDocumentBuilder();
+		Document xmlDoc = db.newDocument();
+		
+		Node wizytowkaNode = xmlDoc.createElement("wizytowka");
+		xmlDoc.appendChild(wizytowkaNode);
+		Node imieNode = xmlDoc.createElement("imie");
+		wizytowkaNode.appendChild(imieNode);
+		Node nazwiskoNode = xmlDoc.createElement("nazwisko");
+		wizytowkaNode.appendChild(nazwiskoNode);
+		Node adresNode = xmlDoc.createElement("adres");
+		wizytowkaNode.appendChild(adresNode);
+		Node telefonNode = xmlDoc.createElement("telefon");
+		wizytowkaNode.appendChild(telefonNode);
+		Node emailNode = xmlDoc.createElement("e-mail");
+		wizytowkaNode.appendChild(emailNode);
+		Node numerDomuNode = xmlDoc.createElement("numer_domu");
+		adresNode.appendChild(numerDomuNode);
+		Node numerMieszkaniaNode = xmlDoc.createElement("numer_mieszkania");
+		adresNode.appendChild(numerMieszkaniaNode);
+		Node komorkowyNode = xmlDoc.createElement("komorkowy");
+		telefonNode.appendChild(komorkowyNode);
+		Node stacjonarnyNode = xmlDoc.createElement("stacjonarny");
+		telefonNode.appendChild(stacjonarnyNode);
+		Node imieText = xmlDoc.createTextNode("Przemys³aw");
+		imieNode.appendChild(imieText);
+		Node nazwiskoText = xmlDoc.createTextNode("Gurba³a");
+		nazwiskoNode.appendChild(nazwiskoText);
+		Node numerDomuText = xmlDoc.createTextNode("3");
+		numerDomuNode.appendChild(numerDomuText);
+		Node numerMieszkaniaText = xmlDoc.createTextNode("76");
+		numerMieszkaniaNode.appendChild(numerMieszkaniaText);
+		Node komorkowyText = xmlDoc.createTextNode("503327384");
+		komorkowyNode.appendChild(komorkowyText);
+		Node emailText = xmlDoc.createTextNode("przemyslaw.gurbala@student.pcz.pl");
+		emailNode.appendChild(emailText);
+		
+		TransformerFactory tf = TransformerFactory.newInstance();
+		Transformer t = tf.newTransformer();
+		t.transform(
+		new DOMSource(xmlDoc),
+		new StreamResult(
+				new 
+				FileOutputStream("C:\\Documents and Settings\\Psemek\\Moje dokumenty\\Polibuda\\Tworzenie us³ug sieciowych\\lab04")
+			)
+		);
+	}
+}

@@ -1,0 +1,44 @@
+package blox.pl;
+
+import java.net.URL;
+import java.util.HashMap;
+import java.util.Iterator;
+
+import org.apache.xmlrpc.client.XmlRpcClient;
+import org.apache.xmlrpc.client.XmlRpcClientConfigImpl;
+
+public class getUserBlogs {
+public static void main(String [] args) throws Exception {
+		
+		XmlRpcClientConfigImpl config = new XmlRpcClientConfigImpl();
+		config.setServerURL(new URL("http://www.blox.pl/xmlrpc"));
+		config.setEnabledForExceptions(true);
+		config.setConnectionTimeout(60 * 1000);
+		
+		XmlRpcClient client = new XmlRpcClient();
+		client.setConfig(config);
+		
+		Object[] os = new Object[] {
+					  new String( "" ),					//appkey - ignorowany
+					  new String( "psemek_pcz" ),		//username - login w³aœciciela/administratora/u¿ytkownika blogów
+					  new String( "boleckolec" )		//password - has³o u¿ytkownika
+		};
+		
+		/*
+		 * zwraca listê adresów jako listê tablic z wartoœciami przypisanymi do kluczy:
+		 * blogid - identyfikator bloga
+		 * url - adres url bloga
+		 * blogName - nazwa bloga
+		 * lub b³¹d wywo³ania procedury zgodny ze specyfikacj¹ XML-RPC
+		 */
+		
+		Object[] result = (Object[]) client.execute("blogger.getUsersBlogs", os);
+		HashMap<?, ?> blogID = (HashMap<?, ?>) result[0];
+		Iterator<?> iterator = blogID.keySet().iterator();
+
+		while (iterator.hasNext()) {
+			String key = (String) iterator.next();
+			System.out.println(key + ": " + blogID.get(key));
+		}
+	}
+}
